@@ -7,10 +7,19 @@ if (Meteor.isClient) {
     }  
   });
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
+  // e.keyCode 13 is for the submit key to be pressed
+  Template.messages.events({
+    'keypress textarea': function(e, instance) {
+      if (e.keyCode == 13) {
+        var value = instance.find('textarea').value;
+        instance.find('textarea').value = '';
+
+        Messages.insert({
+          message: value,
+          timestamp: new Date()
+          // user: Meteor.userId()
+        });
+      }
     }
   });
 }
