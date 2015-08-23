@@ -1,11 +1,10 @@
-if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
+Messages = new Mongo.Collection('messages');
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
+if (Meteor.isClient) {
+  Template.messages.helpers({
+    messages: function () {
+      return Messages.find();
+    }  
   });
 
   Template.hello.events({
