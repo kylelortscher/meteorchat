@@ -36,7 +36,7 @@ if (Meteor.isClient) {
     }
   });
 
-  //Making User and Email Singup
+  //Added User Or Email Login and Signup With Email And Login
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_AND_EMAIL"
   });
